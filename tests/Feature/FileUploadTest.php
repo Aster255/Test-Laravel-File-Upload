@@ -89,7 +89,8 @@ class FileUploadTest extends TestCase
         ]);
         $office = Office::first();
 
-        $this->assertTrue(Storage::disk('public')->exists('offices/' . $filename));
+        $this->assertTrue(Storage::disk('public')
+            ->exists('offices/' . $filename));
 
         $response = $this->get('offices/' . $office->id);
         $response->assertStatus(200);
